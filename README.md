@@ -8,7 +8,7 @@ Neste desafio o candidato terá total liberdade de usar as ferramentas e linguag
 
 #Tecnologias
 Foi usado Java para aplicação Backend,
-Spring, como framework,
+Spring e Lombook, como framework,
 MySQL, como banco de dados;
 
 #Testes
