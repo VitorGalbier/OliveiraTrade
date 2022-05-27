@@ -1,24 +1,30 @@
 package com.Login.OliveiraTrade.Controller;
 
 import com.Login.OliveiraTrade.Model.User;
-import com.Login.OliveiraTrade.Service.UserCreateService;
+import com.Login.OliveiraTrade.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/Create")
+@RequestMapping("/user")
 public class UserController {
     @Autowired
-    private UserCreateService service;
+    private UserService service;
 
-    @PostMapping()
-    public User post (@RequestBody User user){
-        return service.create(user);
+    @PostMapping("/create")
+    public ResponseEntity<String> post (@RequestBody User user){
+        service.create(user);
+        return ResponseEntity.ok("Usuário criado com sucesso!");
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public User put(@RequestBody User user){
         return service.update(user);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity <User> getById(@RequestParam Integer id){
+        return ResponseEntity.ok(service.getById(id));
+    }
 }
